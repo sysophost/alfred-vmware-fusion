@@ -1,39 +1,65 @@
 # VMware Fusion Alfred Workflow
 
-From time to time, I need to run a virtual machine or two on my Mac. [VMware Fusion](http://www.vmware.com/products/fusion/) has always been my favorite app for making that happen. For a while, I went through the normal open the app, click the button to start the VM, click the button to suspend the VM when finished, etc., etc., routine.
-
-The problem is, I don't always need to use the VM's GUI. More often than not, I'm using the VM as a server for some sort of development (e.g. a SQL Server instance). And let's be honest, after you've used [Alfred]() for a little while, you realize just how much time the "old you"  wasted pointing and clicking. As an avid Alfred and vim user, I say, "Why use the mouse when you could just use the keyboard?"
-
-As it turns out, VMware Fusion includes a little-known (at least to me at the time) CLI called `vmrun` that can be used to start and suspend VMs to your heart's content. Best of all, you can even start VMs in a "headless" mode, where not even the VMware Fusion app is visible.  I've taken that utility and sprinkled a little Ruby on top to create this workflow that has markedly improved my development workflow.
+This project borrows very heavily from the **[original](https://github.com/molawson/alfred-vmware-fusion)** by Mo Lawson, and is an extension of his existing work.
+The additional functionality included here allows VMs to be started in headless or GUI mode, allows users to perform a hard stop (in addition to the stop/guest shutdown), and additionally includes hard and soft reset of VMs.
 
 ## Usage
 
-Currently, there are just three simple commands.
+Currently, the following commands are supported:
 
-![commands](http://mola.ws/image/2W2a1j1z1B1r/commands.jpg)
+![supported commands](/images/commands.jpg)
 
 ### Start
 
 Start any VM.
 
-![start](http://mola.ws/image/0T110s0n2W3M/start.gif)
+![vm start](/images/vm_start.jpg)
+
+_Use the command (⌘) key as a modifier to start in headless mode_
+![vm start headless](/images/vm_start_headless.jpg)
+
+### Stop
+
+Shutdown any running VM.
+
+![vm stop](/images/vm_stop.jpg)
+
+_Use the command (⌘) key as a modifier to perform a hard stop_
+![vm stop hard](/images/vm_stop_hard.jpg)
+
+
+### Reset
+
+Reset any running VM.
+
+![vm reset](/images/vm_reset.jpg)
+
+_Use the command (⌘) key as a modifier to perform a hard reset_
+![vm reset hard](/images/vm_reset_hard.jpg)
 
 ### Suspend
 
 Suspend any running VM.
 
-![suspend](http://mola.ws/image/3W0g2i2p301b/suspend.gif)
+![vm suspend](/images/vm_suspend.jpg)
 
 ### List
 
 List all running VMs.
 
-![list](http://mola.ws/image/373O2S082f2G/list.gif)
+![vm list running](/images/vm_list.jpg)
 
 
 ## Installation
 
-Once you have Alfred installed, along with the [Powerpack](http://www.alfredapp.com/powerpack/), you can download the [latest release](https://github.com/molawson/alfred-vmware-fusion/releases/latest) of the workflow file, and double click it to install.
+Once you have Alfred installed, along with the [Powerpack](http://www.alfredapp.com/powerpack/), you can download the [latest release](https://github.com/sysop_host/alfred-vmware-fusion/releases/latest) of the workflow file, and double click it to install.
+
+### Virtual Machine location
+
+For the `vm start` command to work, the workflow needs to know where you keep your VMware images. This is configured in the environment variables of the workflow.
+For some reason this has to be the absolute path to the folder, so using `/Users/<username>/MyVMs` instead of `~/MyVMs`.
+
+**NB:** The workflow _does not_ search directories recursively (i.e. look in subdirectories). It simply looks for files ending in ".vmware" in the directories listed.
 
 ## Assumptions
 
@@ -45,17 +71,3 @@ If you have it installed somewhere else, you'll need to edit the workflow script
 ```ruby
 @vmrun = '/Applications/VMware Fusion.app/Contents/Library/vmrun'
 ```
-
-### Virtual Machine location(s)
-
-For the `vm start` command to work, the workflow needs to know where you keep your VMware images. The default location is `~/Documents/Virtual Machines`.
-
-If you have your VMs somewhere else, you can edit the default from within the Alfred preferences. Open Alfred preferences, find the VMware Fusion workflow, and double click on the box for the `vm start` command. The window that appears will have a few lines that look like this:
-```ruby
-search_paths = [
-  File.expand_path('~/Documents/Virtual Machines'),
-]
-```
-You can edit the `~/Documents/Virtual Machines` part to point to the directory that contains your VMs Since this is a plain old Ruby array, you can also add more locations. 
-
-**NB:** The workflow _does not_ search directories recursively (i.e. look in subdirectories). It simply looks for files ending in ".vmware" in the directories listed.

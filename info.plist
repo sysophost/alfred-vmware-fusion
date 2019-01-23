@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>molawson-vmware-fusion</string>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>19857D45-C308-491E-A96A-39B7EC322E87</key>
@@ -15,6 +17,44 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>249D0951-C640-4917-9143-D3BC5CB92277</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Start Headless</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>222E4F3E-7FE8-4DD1-9B12-2AF692CC09FC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>584FE802-86F4-4F4A-A2DA-A4FFA9E2DF22</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>249D0951-C640-4917-9143-D3BC5CB92277</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>584FE802-86F4-4F4A-A2DA-A4FFA9E2DF22</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>449ECCDB-D4E8-43EA-B478-78F412A18314</key>
@@ -26,10 +66,25 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>457E7B21-3BB1-4CC4-B73A-274BBDA89C1B</key>
 		<array/>
+		<key>868485BC-D09B-40EF-A3F2-D28D5428599A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>584FE802-86F4-4F4A-A2DA-A4FFA9E2DF22</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>8ECBB7F8-22E4-46BB-8E0F-6B8803D5CDF5</key>
 		<array>
 			<dict>
@@ -39,6 +94,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>B7AAC1D6-C2BE-4A5F-936E-6E92B7D82AC9</key>
@@ -50,11 +107,59 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CA5FD44E-C034-45B6-9047-B32DB835BA49</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2BE61958-B3FB-435A-A7CD-C46C18C66A9A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>92092A56-E051-47D0-B2B7-DD06F0B5A9EE</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Hard Stop</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CDD43DF1-0426-4044-8076-098B415DAD81</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>868485BC-D09B-40EF-A3F2-D28D5428599A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>222E4F3E-7FE8-4DD1-9B12-2AF692CC09FC</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Hard Reset</string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Mo Lawson</string>
+	<string></string>
 	<key>description</key>
 	<string>Manage VMware Fusion virtual machines</string>
 	<key>disabled</key>
@@ -66,18 +171,65 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+name, path = "{query}".split(':')
+name = name.split('.')[0]
+path = File.join(ENV["vmpath"], path)
+vm = Vmware::Alfred.start(path)
+print "#{name} VM was started"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>449ECCDB-D4E8-43EA-B478-78F412A18314</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>keyword</key>
 				<string>vm list</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
 				<key>runningsubtext</key>
 				<string>Finding VMs...</string>
 				<key>script</key>
 				<string>require './vmware/alfred'
-
-puts Vmware::Alfred.list_running</string>
+puts Vmware::Alfred.list_running
+</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>What VMware Fusion virtual machines are currently running?</string>
 				<key>title</key>
@@ -92,39 +244,31 @@ puts Vmware::Alfred.list_running</string>
 			<key>uid</key>
 			<string>457E7B21-3BB1-4CC4-B73A-274BBDA89C1B</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>script</key>
-				<string>require './vmware/alfred'
-
-name, path = "{query}".split(':')
-
-vm = Vmware::Alfred.start(path)
-print "#{name} VM was started"</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>449ECCDB-D4E8-43EA-B478-78F412A18314</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>keyword</key>
 				<string>vm start</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
 				<key>runningsubtext</key>
 				<string>Finding VMs...</string>
 				<key>script</key>
@@ -132,10 +276,14 @@ print "#{name} VM was started"</string>
 
 # Array of directories containing VMware files (.vmwarevm)
 search_paths = [
-  File.expand_path('~/Documents/Virtual Machines'),
+	File.expand_path(ENV["vmpath"]),
 ]
 
 puts Vmware::Alfred.list_idle(search_paths)</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>Start VMware Fusion virtual machine</string>
 				<key>title</key>
@@ -150,7 +298,36 @@ puts Vmware::Alfred.list_idle(search_paths)</string>
 			<key>uid</key>
 			<string>19857D45-C308-491E-A96A-39B7EC322E87</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+name, path = "{query}".split(':')
+name = name.split('.')[0]
+path = File.join(ENV["vmpath"], path)
+vm = Vmware::Alfred.startHeadless(path)
+print "#{name} VM was started"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>249D0951-C640-4917-9143-D3BC5CB92277</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -159,11 +336,7 @@ puts Vmware::Alfred.list_idle(search_paths)</string>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
 				<false/>
-				<key>output</key>
-				<integer>0</integer>
 				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
 				<false/>
 				<key>text</key>
 				<string>{query}</string>
@@ -175,45 +348,41 @@ puts Vmware::Alfred.list_idle(search_paths)</string>
 			<key>uid</key>
 			<string>584FE802-86F4-4F4A-A2DA-A4FFA9E2DF22</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>script</key>
-				<string>require './vmware/alfred'
-
-name, path = "{query}".split(':')
-
-Vmware::Alfred.suspend(path)
-print "#{name} VM was suspended"</string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>B7AAC1D6-C2BE-4A5F-936E-6E92B7D82AC9</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>keyword</key>
 				<string>vm suspend</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
 				<key>runningsubtext</key>
 				<string>Finding VMs...</string>
 				<key>script</key>
 				<string>require './vmware/alfred'
 
 puts Vmware::Alfred.list_running</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>Suspend running VMware Fusion virtual machine</string>
 				<key>title</key>
@@ -228,7 +397,245 @@ puts Vmware::Alfred.list_running</string>
 			<key>uid</key>
 			<string>8ECBB7F8-22E4-46BB-8E0F-6B8803D5CDF5</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+name, path = "{query}".split(':')
+name = name.split('.')[0]
+Vmware::Alfred.suspend(path)
+print "#{name} VM was suspended"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B7AAC1D6-C2BE-4A5F-936E-6E92B7D82AC9</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+name, path = "{query}".split(':')
+name = name.split('.')[0]
+Vmware::Alfred.reset(path)
+print "#{name} VM was reset"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>868485BC-D09B-40EF-A3F2-D28D5428599A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>vm reset</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Finding VMs...</string>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+puts Vmware::Alfred.list_running</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Reset running VMware Fusion virtual machine</string>
+				<key>title</key>
+				<string>Reset VM</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>CDD43DF1-0426-4044-8076-098B415DAD81</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+name, path = "{query}".split(':')
+name = name.split('.')[0]
+Vmware::Alfred.resetHard(path)
+print "#{name} VM was hard reset"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>222E4F3E-7FE8-4DD1-9B12-2AF692CC09FC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+name, path = "{query}".split(':')
+name = name.split('.')[0]
+Vmware::Alfred.stop(path)
+print "#{name} VM was stopped"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2BE61958-B3FB-435A-A7CD-C46C18C66A9A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>vm stop</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Finding VMs...</string>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+puts Vmware::Alfred.list_running</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Stop running VMware Fusion virtual machine</string>
+				<key>title</key>
+				<string>Stop VM</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>CA5FD44E-C034-45B6-9047-B32DB835BA49</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>require './vmware/alfred'
+
+name, path = "{query}".split(':')
+name = name.split('.')[0]
+Vmware::Alfred.stopHard(path)
+print "#{name} VM was hard stopped"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>92092A56-E051-47D0-B2B7-DD06F0B5A9EE</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -237,36 +644,124 @@ puts Vmware::Alfred.list_running</string>
 	<dict>
 		<key>19857D45-C308-491E-A96A-39B7EC322E87</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
-			<real>140</real>
+			<integer>110</integer>
+		</dict>
+		<key>222E4F3E-7FE8-4DD1-9B12-2AF692CC09FC</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>note</key>
+			<string>Hard Reset</string>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>590</integer>
+		</dict>
+		<key>249D0951-C640-4917-9143-D3BC5CB92277</key>
+		<dict>
+			<key>note</key>
+			<string>Start Headless</string>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>2BE61958-B3FB-435A-A7CD-C46C18C66A9A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>2</integer>
+			<key>note</key>
+			<string>Soft Stop</string>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>730</integer>
 		</dict>
 		<key>449ECCDB-D4E8-43EA-B478-78F412A18314</key>
 		<dict>
+			<key>note</key>
+			<string>Start GUI</string>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
-			<real>140</real>
+			<integer>40</integer>
 		</dict>
 		<key>457E7B21-3BB1-4CC4-B73A-274BBDA89C1B</key>
 		<dict>
+			<key>xpos</key>
+			<integer>1010</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>80</integer>
 		</dict>
 		<key>584FE802-86F4-4F4A-A2DA-A4FFA9E2DF22</key>
 		<dict>
+			<key>xpos</key>
+			<integer>730</integer>
 			<key>ypos</key>
-			<real>200</real>
+			<integer>320</integer>
+		</dict>
+		<key>868485BC-D09B-40EF-A3F2-D28D5428599A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>2</integer>
+			<key>note</key>
+			<string>Soft Reset</string>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>450</integer>
 		</dict>
 		<key>8ECBB7F8-22E4-46BB-8E0F-6B8803D5CDF5</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
-			<real>270</real>
+			<integer>320</integer>
+		</dict>
+		<key>92092A56-E051-47D0-B2B7-DD06F0B5A9EE</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>note</key>
+			<string>Hard Stop</string>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>870</integer>
 		</dict>
 		<key>B7AAC1D6-C2BE-4A5F-936E-6E92B7D82AC9</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
-			<real>270</real>
+			<integer>320</integer>
+		</dict>
+		<key>CA5FD44E-C034-45B6-9047-B32DB835BA49</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>800</integer>
+		</dict>
+		<key>CDD43DF1-0426-4044-8076-098B415DAD81</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>520</integer>
 		</dict>
 	</dict>
+	<key>variables</key>
+	<dict>
+		<key>vmpath</key>
+		<string>/Users/sysop_host/Virtual Machines/</string>
+	</dict>
+	<key>version</key>
+	<string></string>
 	<key>webaddress</key>
-	<string>http://github.com/molawson/alfred-vmware-fusion</string>
+	<string></string>
 </dict>
 </plist>

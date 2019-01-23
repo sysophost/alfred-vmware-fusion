@@ -18,7 +18,7 @@ module Vmware
 
     def vm_details(vm)
       name_chunks = vm.split('/').last.split('.')
-      extension = name_chunks.pop
+      #extension = name_chunks.pop
       name = name_chunks.join('.')
       path = vm.strip
       { :name => name, :path => path }

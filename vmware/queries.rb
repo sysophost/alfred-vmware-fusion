@@ -26,7 +26,7 @@ module Vmware
 
     def find_in_dir(dir)
       if Dir.exist?(dir) && Dir.chdir(dir)
-        Dir.glob('*.vmwarevm') { |p| yield File.join(dir, p) }
+        Dir.glob('*.vmwarevm') { |p| yield p }
       end
     end
 
