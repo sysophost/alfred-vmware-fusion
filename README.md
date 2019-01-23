@@ -52,12 +52,16 @@ List all running VMs.
 
 ## Installation
 
-Once you have Alfred installed, along with the [Powerpack](http://www.alfredapp.com/powerpack/), you can download the [latest release](https://github.com/sysop_host/alfred-vmware-fusion/releases/latest) of the workflow file, and double click it to install.
+Once you have Alfred installed, along with the [Powerpack](http://www.alfredapp.com/powerpack/), you can download the [latest release](https://github.com/sysophost/alfred-vmware-fusion/releases) of the workflow file, and double click it to install.
 
 ### Virtual Machine location
 
 For the `vm start` command to work, the workflow needs to know where you keep your VMware images. This is configured in the environment variables of the workflow.
-For some reason this has to be the absolute path to the folder, so using `/Users/<username>/MyVMs` instead of `~/MyVMs`.
+For some reason this has to be the absolute path to the folder, so using `/Users/<username>/Virtual Machines` instead of `~/Virtual Machines`.
+
+_Environment variables can be configured by pressing this button (in the top right corner):_
+
+![environment variables](/images/env_var_button.jpg)
 
 **NB:** The workflow _does not_ search directories recursively (i.e. look in subdirectories). It simply looks for files ending in ".vmware" in the directories listed.
 
