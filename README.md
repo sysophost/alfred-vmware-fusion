@@ -63,13 +63,13 @@ _Environment variables can be configured by pressing this button (in the top rig
 
 ![environment variables](/images/env_var_button.jpg)
 
-**NB:** The workflow _does not_ search directories recursively (i.e. look in subdirectories). It simply looks for files ending in ".vmware" in the directories listed.
+**NB:** The workflow _does not_ search directories recursively (i.e. look in subdirectories). It simply looks for files ending in `.vmwarevm` in the directories listed.
 
 ## Assumptions
 
 ### VMware Fusion location
 
-The workflow assumes that you have `VMware Fusion.app` installed in the default location, `/Applications`. Since the `vmrun` tool lives withing the app package, it uses this default to issue commands.
+The workflow assumes that you have `VMware Fusion.app` installed in the default location, `/Applications`. Since the `vmrun` tool lives within the app package, it uses this default to issue commands.
 
 If you have it installed somewhere else, you'll need to edit the workflow script. To do that, in Alfred preferences, find the VMware Fusion workflow and double click on any of the squares within the workflow. Near the bottom right of the window that appears, there's a button that says "Open workflow folder."  Click that and you're looking for the `vmware/alfred.rb` file. Change the following line to point to your `vmrun` location:
 ```ruby
